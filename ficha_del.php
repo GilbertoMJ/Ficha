@@ -3,7 +3,7 @@
   or print(mysqli_error($conexao))
 
   if($sql == 1)
-		echo 'Dados deletados!';
-	else
-		echo 'Erro!';
+	echo 'Dados deletados!';
+else
+	echo 'Erro!';
 ?>
