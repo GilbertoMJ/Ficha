@@ -12,18 +12,6 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `banco`
---
-
--- --------------------------------------------------------
-
 --
 -- Estrutura da tabela `cadastro`
 --
@@ -42,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `suites` int(11) NOT NULL,
   `banheiro` int(11) NOT NULL,
   `garagem` int(11) NOT NULL,
-  `descricao` text NOT NULL,
   `area_construida` float NOT NULL,
   `area_total` float NOT NULL,
   `area_comum` float NOT NULL,
@@ -52,6 +39,8 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `disponivel` tinyint(1) NOT NULL,
   `mostrar_site` tinyint(1) NOT NULL,
   `titulo` varchar(10) NOT NULL,
+  `descricao` text NOT NULL,
+  -- ADICIONAR NO PHP -----------------------------------
   `condominio_fechado` tinyint(1) DEFAULT NULL,
   `despensa` tinyint(1) DEFAULT NULL,
   `lavabo` tinyint(1) DEFAULT NULL,
@@ -68,6 +57,7 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `cozinha_planejada` tinyint(1) DEFAULT NULL,
   `salao_festa` tinyint(1) DEFAULT NULL,
   `portaria` tinyint(1) DEFAULT NULL,
+  ------------------------------------------------------
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
@@ -81,7 +71,3 @@ INSERT INTO `cadastro` (`codigo`, `negociacao`, `tipo`, `endereco`, `bairro`, `c
 (3, 1, '1', '1', '1', '1', '1', 1, 1, 1, 1, 1, 'fdh', 1, 1, 1, 1, 1, 1, 1, 1, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 1, '1', '1', '1', '1', '1', 1, 1, 1, 1, 1, 'fdh', 1, 1, 1, 1, 1, 1, 1, 1, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
