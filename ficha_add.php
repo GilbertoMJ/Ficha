@@ -38,12 +38,14 @@
 	$mostrar_site= (int)isset($_POST["mostrar_site_"]);
 	$titulo= strip_tags ($_POST["titulo_"]);
 	$descricao= strip_tags ($_POST["descricao_"]);
-	$sql= mysqli_query($conexao,"insert into cadastro(negociacao,
-	tipo, endereco, bairro, cidade, regiao, salas, quartos, suites,
-	banheiro, garagem, area_construida, area_total, area_comum,
+	$sql= mysqli_query($conexao,"insert into cadastro(
+	 negociacao,tipo,endereco,bairro,cidade,regiao,salas,quartos,suites,banheiro,garagem,
+	 condominio_fechado,despensa,lavabo,piscina,sauna, area_servico,lavanderia,piso_frio,armario_embutido,
+	 churrasqueira,escritorio,sacada,varanda,cozinha_planejada,salao_festa,portaria,area_construida, area_total, area_comum,
 	area_terreno, destaque,lancamento,disponivel,mostrar_site, titulo, descricao)
-	values ('$negociacao','$tipo','$endereco','$bairro','$cidade','$regiao','$salas','$quartos','$suites','$banheiros',
-	'$garagem','$area_contruida',
+	values ('$negociacao','$tipo','$endereco','$bairro','$cidade','$regiao','$salas','$quartos','$suites','$banheiros','$garagem',
+	'$condominio_fechado','$despensa','$lavabo','$piscina','$sauna','$area_servico','$lavanderia','$piso_frio','$armario_embutido',
+	'$churrasqueira','$escritorio','$sacada','$varanda','$cozinha_planejada','$salao_festa','$portaria','$area_contruida',
 	'$area_total','$area_comum','$area_terreno','$destaque','$lancamento','$disponivel','$mostrar_site','$titulo','$descricao')")
 	or print(mysqli_error($conexao));
 
