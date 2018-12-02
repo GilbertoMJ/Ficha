@@ -1,3 +1,6 @@
+<?php include 'config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
   <head>
@@ -179,61 +182,51 @@
     </div>
     <hr class="mb-4">
     <div class="mb-3">
-            <label for="endereco">Área construída(em M²)</label>
+            <label for="area_construida">Área construída(em M²)</label>
             <input type="text" class="form-control" id="endereco" name="area_contruida_" placeholder=" " required>
             <div class="invalid-feedback">
               Por favor, insira seu endereço de entrega.
             </div>
           </div>
     <div class="mb-3">
-            <label for="endereco">Área total(em M²)</label>
+            <label for="area_total">Área total(em M²)</label>
             <input type="text" class="form-control" id="endereco" name="area_total_"placeholder=" " required>
             <div class="invalid-feedback">
               Por favor, insira seu endereço de entrega.
             </div>
           </div>
     <div class="mb-3">
-            <label for="endereco">Área comum(em M²)</label>
+            <label for="area_comum">Área comum(em M²)</label>
             <input type="text" class="form-control" id="endereco" name="area_comum_" placeholder=" " required>
             <div class="invalid-feedback">
               Por favor, insira seu endereço de entrega.
             </div>
           </div>
     <div class="mb-3">
-            <label for="endereco">Área terreno(em M²)</label>
-            <input type="text" class="form-control" id="endereco" name="area_terreno_" placeholder=" " required>
+            <label for="area_terreno">Área terreno(em M²)</label>
+            <input type="number" class="form-control" id="endereco" name="area_terreno_" placeholder=" " required>
             <div class="invalid-feedback">
               Por favor, insira seu endereço de entrega.
             </div>
           </div>
-    <div class="mb-3">
-            <label for="endereco">Destaque</label>
-            <input type="text" class="form-control" id="endereco"name="destaque_" placeholder=" " required>
-            <div class="invalid-feedback">
-              Por favor, insira seu endereço de entrega.
+          <div class="row">
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="destaque_"id="destaque">
+              <label class="custom-control-label" for="destaque">destaque</label>
+           </div>
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="lancamento_"id="lancamento">
+              <label class="custom-control-label" for="lancamento">lancamento</label>
             </div>
-          </div>
-    <div class="mb-3">
-            <label for="endereco">Lançamento</label>
-            <input type="text" class="form-control" id="endereco" name="lancamento_"placeholder=" " required>
-            <div class="invalid-feedback">
-              Por favor, insira seu endereço de entrega.
+          <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" name="disponivel_"id="disponivel">
+              <label class="custom-control-label" for="disponivel">disponivel</label>
             </div>
-          </div>
-    <div class="mb-3">
-            <label for="endereco">Disponível</label>
-            <input type="text" class="form-control" id="endereco" name="disponivel_"placeholder=" " required>
-            <div class="invalid-feedback">
-              Por favor, insira seu endereço de entrega.
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" name="mostrar_site_"id="mostrar_site">
+                <label class="custom-control-label" for="mostrar_site">mostrar site</label>
+              </div>
             </div>
-          </div>
-         <div class="mb-3">
-            <label for="endereco">Mostrar no Site</label>
-            <input type="text" class="form-control"  name="mostrar_site_"placeholder=" " required>
-            <div class="invalid-feedback">
-              Por favor, insira seu endereço de entrega.
-            </div>
-          </div>
     <div class="mb-3">
             <label for="endereco">Imagem Principal</label>
             <input type="text" class="form-control" id="endereco" name="imagem_"placeholder=" " required>
@@ -261,8 +254,42 @@
 
                      <button class="btn btn-primary btn-lg btn-block" type="submit" value="Enviar">Cadastrar</button>
           </form>
+
         </div>
       </div>
+
     </div>
+
+
+    <!-- Principal JavaScript do Bootstrap
+    ================================================== -->
+    <!-- Foi colocado no final para a página carregar mais rápido -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script>
+      // Exemplo de JavaScript para desativar o envio do formulário, se tiver algum campo inválido.
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Selecione todos os campos que nós queremos aplicar estilos Bootstrap de validação customizados.
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Faz um loop neles e previne envio
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
   </body>
 </html>
