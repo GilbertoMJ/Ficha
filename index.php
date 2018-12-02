@@ -229,7 +229,7 @@
             </div>
     <div class="mb-3">
       <label for="imagem">Imagem:</label>
-        <input type="file" name="imagem"/>
+        <input type="file" name="imagem_"/>
           <br/>
     <div class="mb-3">
             <label for="endereco">Título</label>
