@@ -54,51 +54,25 @@
 	else
 		echo 'Erro!';
 
-									function salvarFoto($foto){
-
-										if (!empty($foto["name"])) {
-											$largura = 640; //largura minima
-											$altura = 480; // altura minima
-											$tamanho = 1010680; //tamanho maximo
-
-											$error = array();
-
-											if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $foto["type"])){
-											   $error[1] = "Imagem inválida. Formatos aceitos: pjpeg|jpeg|png|gif|bmp";
-											}
-
-											$dimensoes = getimagesize($foto["tmp_name"]);
-
-											if($dimensoes[0] < $largura) {
-												$error[2] = "A largura da imagem não deve ser inferior a ".$largura." pixels";
-											}
-
-											if($dimensoes[1] < $altura) {
-												$error[3] = "Altura da imagem não deve ser inferior ".$altura." pixels";
-											}
-
-											if($foto["size"] > $tamanho) {
-												$error[4] = "A imagem deve ter no máximo ".$tamanho." bytes";
-											}
-
-											if (count($error) == 0) {
-
-												preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
-
-												$nome_imagem = md5(uniqid(time())) . "." . $ext[1];
-
-												$caminho_imagem = "imagens/imoveis/" . $nome_imagem;
-
-												move_uploaded_file($foto["tmp_name"], $caminho_imagem);
-											}
-
-											if (count($error) != 0) {
-												foreach ($error as $erro) {
-													echo "<div class='alert alert-danger'> <strong>Ocorreram erros ao salvar a imagem!</strong>
-													<br/> $erro.
-													</div>";
-												}
-											}
-										}
-									}
+									if($imagem != NULL) { 
+    $nomeFinal = time().'.jpg';
+    if (move_uploaded_file($imagem['tmp_name'], $nomeFinal)) {
+        $tamanhoImg = filesize($nomeFinal); 
+ 
+        $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg)); 
+ 
+        mysql_connect($host,$username,$password) or die("Impossível Conectar"); 
+ 
+        @mysql_select_db($db) or die("Impossível Conectar"); 
+ 
+        mysql_query("INSERT INTO PESSOA (PES_IMG) VALUES ('$mysqlImg')") or die("O sistema não foi capaz de executar a query"); 
+ 
+        unlink($nomeFinal);
+         
+        header("location:exibir.php");
+    }
+} 
+else { 
+    echo"Você não realizou o upload de forma satisfatória."; 
+} 
 	?>

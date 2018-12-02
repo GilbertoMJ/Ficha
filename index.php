@@ -228,12 +228,10 @@
               </div>
             </div>
     <div class="mb-3">
-            <label for="endereco">Imagem Principal</label>
-            <input type="text" class="form-control" id="endereco" name="imagem_"placeholder=" " required>
-            <div class="invalid-feedback">
-              Por favor, insira seu endereço de entrega.
-            </div>
-          </div>
+           <label for="imagem">Imagem:</label>
+        <input type="file" name="imagem"/>
+        <br/>
+         </div>
     <div class="mb-3">
             <label for="endereco">Título</label>
             <input type="text" class="form-control" id="endereco" name="titulo_"placeholder=" " required>
