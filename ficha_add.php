@@ -38,15 +38,27 @@
 	$mostrar_site= (int)isset($_POST["mostrar_site_"]);
 	$titulo= strip_tags ($_POST["titulo_"]);
 	$descricao= strip_tags ($_POST["descricao_"]);
+
+	if(isset($_FILES['imagem_'])){
+
+		$extensao = strtolower(substr($_FILES['imagem_']['name'], -4));
+		$novo_nome = md5(time()). $extensao;
+		$diretorio = "upload/";
+
+		move_uploaded_file($_FILES['imagem_']['tmp_name'],$diretorio.$novo_nome);
+		echo '$novo_nome';
+	}
+	
+
 	$sql= mysqli_query($conexao,"insert into cadastro(
 	 negociacao,tipo,endereco,bairro,cidade,regiao,salas,quartos,suites,banheiro,garagem,
 	 condominio_fechado,despensa,lavabo,piscina,sauna, area_servico,lavanderia,piso_frio,armario_embutido,
 	 churrasqueira,escritorio,sacada,varanda,cozinha_planejada,salao_festa,portaria,area_construida, area_total, area_comum,
-	area_terreno, destaque,lancamento,disponivel,mostrar_site, titulo, descricao)
+	area_terreno, destaque,lancamento,disponivel,mostrar_site, titulo, descricao,imagem)
 	values ('$negociacao','$tipo','$endereco','$bairro','$cidade','$regiao','$salas','$quartos','$suites','$banheiros','$garagem',
 	'$condominio_fechado','$despensa','$lavabo','$piscina','$sauna','$area_servico','$lavanderia','$piso_frio','$armario_embutido',
 	'$churrasqueira','$escritorio','$sacada','$varanda','$cozinha_planejada','$salao_festa','$portaria','$area_contruida',
-	'$area_total','$area_comum','$area_terreno','$destaque','$lancamento','$disponivel','$mostrar_site','$titulo','$descricao')")
+	'$area_total','$area_comum','$area_terreno','$destaque','$lancamento','$disponivel','$mostrar_site','$titulo','$descricao','$novo_nome')")
 	or print(mysqli_error($conexao));
 
 	if($sql==1)
@@ -54,25 +66,4 @@
 	else
 		echo 'Erro!';
 
-									if($imagem != NULL) { 
-    $nomeFinal = time().'.jpg';
-    if (move_uploaded_file($imagem['tmp_name'], $nomeFinal)) {
-        $tamanhoImg = filesize($nomeFinal); 
- 
-        $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg)); 
- 
-        mysql_connect($host,$username,$password) or die("Impossível Conectar"); 
- 
-        @mysql_select_db($db) or die("Impossível Conectar"); 
- 
-        mysql_query("INSERT INTO PESSOA (PES_IMG) VALUES ('$mysqlImg')") or die("O sistema não foi capaz de executar a query"); 
- 
-        unlink($nomeFinal);
-         
-        header("location:exibir.php");
-    }
-} 
-else { 
-    echo"Você não realizou o upload de forma satisfatória."; 
-} 
 	?>
